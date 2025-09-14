@@ -9,7 +9,7 @@ To address this gap, we developed a deep learning framework that integrates ultr
 
 ## Models
 <img width="3795" height="2244" alt="Fig 2" src="https://github.com/user-attachments/assets/fa3b252b-f6bd-4481-b3b0-470457a29b8e" />
-Deep learning framework. A–C: single-modality classifiers (Optos, LUS, TUS). D: prediction averaging strategy. E: attention-based feature fusion strategy. F: convolutional block attention module (CBAM) architecture with channel attention model (CAM) and spatial attention module (SAM) components.
+_Deep learning framework. A–C: single-modality classifiers (Optos, LUS, TUS). D: prediction averaging strategy. E: attention-based feature fusion strategy. F: convolutional block attention module (CBAM) architecture with channel attention model (CAM) and spatial attention module (SAM) components._
 
 1. Ultra-widefield fundus images (Optos)
 2. Longitudinal ultrasound (LUS)
