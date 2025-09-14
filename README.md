@@ -12,15 +12,15 @@ Each imaging modality was first trained independently to evaluate its contributi
 
 
 <img width="3795" height="2244" alt="Fig 2" src="https://github.com/user-attachments/assets/fa3b252b-f6bd-4481-b3b0-470457a29b8e" />
-Deep learning framework. A–C: single-modality classifiers (Optos, LUS, TUS). D: prediction averaging strategy. E: attention-based feature fusion strategy. F: convolutional block attention module (CBAM) architecture with channel attention model (CAM) and spatial attention module (SAM) components.<br/><br/>
-
-
+Deep learning framework. A–C: single-modality classifiers (Optos, LUS, TUS). D: prediction averaging strategy. E: attention-based feature fusion strategy. F: CBAM architecture with CAM and SAM components.<br/><br/>
 
 ## Models included
 1. Ultra-widefield fundus images (Optos)
 2. Longitudinal ultrasound (LUS)
 3. Transverse ultrasound (TUS)
 4. Attention-based fusion.
+
+You can download the models and the pretrained weights [[here](https://uofi.box.com/s/c3x7g032tel3phvzjx3stvrvdirwstco)]. 
 
 ## Support
 For support, email adadzi2@uic.edu or xcy@uic.edu, or open an issue on the repository's issue tracker.
