@@ -20,7 +20,7 @@ Deep learning framework. A–C: single-modality classifiers (Optos, LUS, TUS). D
 3. Transverse ultrasound (TUS)
 4. Attention-based fusion.
 
-You can download the models and the pretrained weights [[here](https://uofi.box.com/s/c3x7g032tel3phvzjx3stvrvdirwstco)]. 
+You can download the models and the pretrained weights [here](https://uofi.box.com/s/c3x7g032tel3phvzjx3stvrvdirwstco). 
 
 ## Support
 For support, email adadzi2@uic.edu or xcy@uic.edu, or open an issue on the repository's issue tracker.
@@ -36,5 +36,5 @@ Dadzie AK, Iddir SP, Abtahi M, et al. (2025). Attention-Based Multimodal Deep Le
 
 ## Contact
 Lead Author: Albert Kofi Dadzie - adadzi2@uic.edu\
-Project Supervisor: Dr. Xincheng Yao - xcy@uic.edu\ & Dr. Michael J. Heiferman - mheif@uic.edu\
+Project Supervisors: Dr. Xincheng Yao - xcy@uic.edu & Dr. Michael J. Heiferman - mheif@uic.edu\
 Institutions: Department of Biomedical Engineering and Department of Ophthalmology & Visual Sciences, University of Illinois Chicago.
