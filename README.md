@@ -21,6 +21,7 @@ For support, email adadzi2@uic.edu or xcy@uic.edu, or open an issue on the repos
 Dadzie AK, Iddir SP, Abtahi M, et al. (2025). Attention-Based Multimodal Deep Learning for Uveal Melanoma Classification Using Ultra-Widefield Fundus Images and Ocular Ultrasound
 
 ## Contact
-Lead Developer: Albert Kofi Dadzie - adadzi2@uic.edu\
+Lead Author: Albert Kofi Dadzie - adadzi2@uic.edu\
 Project Supervisor: Dr. Xincheng Yao - xcy@uic.edu\
-Institution: Department of Biomedical Engineering and Department of Ophthalmology & Visual Sciences, University of Illinois Chicago.
+                    Dr. Michael J. Heiferman - mheif@uic.edu
+Institutions: Department of Biomedical Engineering and Department of Ophthalmology & Visual Sciences, University of Illinois Chicago.
