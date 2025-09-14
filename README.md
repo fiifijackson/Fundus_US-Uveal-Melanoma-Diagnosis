@@ -1,7 +1,6 @@
 # Fundus_US-Uveal-Melanoma-Diagnosis
 ## Overview
-This repository provides the models and pretrained weights for the automated classification of uveal melanoma (UM) and choroidal nevi using ultra-widefield fundus photography and B-scan ocular ultrasound (longitudinal and transverse views), as described in: Attention-Based Multimodal Deep Learning for Uveal Melanoma Classification Using Ultra-Widefield Fundus Images and Ocular Ultrasound
-Dadzie AK, Iddir SP, Abtahi M, Ebrahimi B, Rahimi M, Ganesh S, Son T, Heiferman MJ, Yao X. (2025).
+This repository provides the models and pretrained weights for the automated classification of uveal melanoma (UM) and choroidal nevi using ultra-widefield fundus photography and B-scan ocular ultrasound (longitudinal and transverse views), as described in: Dadzie AK, Iddir SP, Abtahi M, et al (2025). Attention-Based Multimodal Deep Learning for Uveal Melanoma Classification Using Ultra-Widefield Fundus Images and Ocular Ultrasound
 
 ## Models Included
 1. Ultra-widefield fundus images (Optos)
@@ -19,9 +18,7 @@ For support, email adadzi2@uic.edu or xcy@uic.edu, or open an issue on the repos
 • All contributors who participated in data collection, development and validation of the deep learning models.
 
 ## Citation
-If you use OCTA-ReVA in your research, please cite:
-
-Dadzie, Albert; Le, David; Abtahi, Mansour; Ebrahimi, Behrouz; Adejumo, Tobiloba; Son, Taeyoon; et al. (2024). OCTA-ReVA: Comprehensive open-source tool for retinal vessel analysis in OCTA. Optica Open. Preprint. https://doi.org/10.1364/opticaopen.25679508.v1
+Dadzie AK, Iddir SP, Abtahi M, et al. (2025). Attention-Based Multimodal Deep Learning for Uveal Melanoma Classification Using Ultra-Widefield Fundus Images and Ocular Ultrasound
 
 ## Contact
 Lead Developer: Albert Kofi Dadzie - adadzi2@uic.edu\
