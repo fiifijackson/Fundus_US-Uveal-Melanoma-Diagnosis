@@ -22,6 +22,5 @@ Dadzie AK, Iddir SP, Abtahi M, et al. (2025). Attention-Based Multimodal Deep Le
 
 ## Contact
 Lead Author: Albert Kofi Dadzie - adadzi2@uic.edu\
-Project Supervisor: Dr. Xincheng Yao - xcy@uic.edu\
-                    Dr. Michael J. Heiferman - mheif@uic.edu
+Project Supervisor: Dr. Xincheng Yao - xcy@uic.edu\ & Dr. Michael J. Heiferman - mheif@uic.edu\
 Institutions: Department of Biomedical Engineering and Department of Ophthalmology & Visual Sciences, University of Illinois Chicago.
