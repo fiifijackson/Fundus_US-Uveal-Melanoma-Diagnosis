@@ -32,7 +32,7 @@ For support, email adadzi2@uic.edu or xcy@uic.edu, or open an issue on the repos
 • All contributors who participated in data collection, development and validation of the deep learning models.
 
 ## Citation
-Dadzie AK, Iddir SP, Abtahi M, et al. (2025). Attention-Based Multimodal Deep Learning for Uveal Melanoma Classification Using Ultra-Widefield Fundus Images and Ocular Ultrasound
+Dadzie, A. K., Iddir, S. P., Abtahi, M., Ebrahimi, B., Rahimi, M., Ganesh, S., ... & Yao, X. (2025). Attention-Based Multimodal Deep Learning for Uveal Melanoma Classification Using Ultra-Widefield Fundus Images and Ocular Ultrasound. Ophthalmology Science, 100985.
 
 ## Contact
 Lead Author: Albert Kofi Dadzie - adadzi2@uic.edu\
