@@ -1,0 +1,9 @@
+tensorflow>=2.12
+keras>=2.12
+numpy
+pandas
+scikit-learn
+matplotlib
+seaborn
+openpyxl
+PyYAML
