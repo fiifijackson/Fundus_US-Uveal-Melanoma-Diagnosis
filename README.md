@@ -1,7 +1,14 @@
 # Fundus_US Uveal Melanoma Diagnosis
 ## Overview
-This repository provides the models and pretrained weights for the automated classification of uveal melanoma (UM) and choroidal nevi using ultra-widefield fundus photography and B-scan ocular ultrasound (longitudinal and transverse views), as described in: Dadzie AK, Iddir SP, Abtahi M, et al (2025). Attention-Based Multimodal Deep Learning for Uveal Melanoma Classification Using Ultra-Widefield Fundus Images and Ocular Ultrasound.
+This repository contains code for training and evaluating a multi-modal deep learning classifier using three aligned imaging inputs:
 
+1. Optos fundus images
+2. Longitudinal ultrasound images (LUS)
+3. Transverse ultrasound images (TUS)
+
+This methodology is described in: Dadzie AK, Iddir SP, Abtahi M, et al (2025). Attention-Based Multimodal Deep Learning for Uveal Melanoma Classification Using Ultra-Widefield Fundus Images and Ocular Ultrasound.
+
+## Problem Statement
 UM is the most common primary intraocular malignancy, but distinguishing it from benign choroidal nevi remains a critical clinical challenge due to overlapping features and variability in clinician interpretation. Current imaging methods such as fundus photography and ultrasound each provide important but incomplete information when used in isolation.
 
 To address this gap, we developed a deep learning framework that integrates ultra-widefield fundus photographs and B-scan ultrasound (both longitudinal and transverse views) for the automated classification of UM versus choroidal nevi. Using an EfficientNetV2-S backbone with a convolutional block attention module (CBAM) for feature-level fusion, the multimodal model effectively combines surface-level information from fundus images with depth-resolved tumor characteristics from ultrasound.
@@ -14,13 +21,146 @@ Each imaging modality was first trained independently to evaluate its contributi
 <img width="3795" height="2244" alt="Fig 2" src="https://github.com/user-attachments/assets/fa3b252b-f6bd-4481-b3b0-470457a29b8e" />
 Deep learning framework. A–C: single-modality classifiers (Optos, LUS, TUS). D: prediction averaging strategy. E: attention-based feature fusion strategy. F: CBAM architecture with CAM and SAM components.<br/><br/>
 
-## Models included
-1. Ultra-widefield fundus images (Optos)
-2. Longitudinal ultrasound (LUS)
-3. Transverse ultrasound (TUS)
-4. Attention-based fusion.
+## Repository structure
 
-You can download the models and the pretrained weights [here](https://uofi.box.com/s/c3x7g032tel3phvzjx3stvrvdirwstco). 
+```text
+├── configs/
+│   └── config.yaml                  # Main experiment configuration
+├── data/
+│   └── README.md                    # Expected data organization
+├── scripts/
+│   ├── train_cross_validation.py    # Main training/evaluation script
+│   └── predict.py                   # Inference script
+├── src/
+│   └── mm_fusion/
+│       ├── data.py                  # CSV loading and image generators
+│       ├── metrics.py               # Evaluation and plotting utilities
+│       ├── model.py                 # CBAM and fusion model definitions
+│       └── utils.py                 # Config, seed, and GPU helpers
+├── requirements.txt
+├── .gitignore
+└── LICENSE
+```
+
+## Installation
+
+Create and activate a Python environment, then install the dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+To make the local `src/` package importable, run scripts from the repository root using:
+
+```bash
+export PYTHONPATH=$PWD/src
+```
+
+On Windows PowerShell:
+
+```powershell
+$env:PYTHONPATH="$PWD\src"
+```
+
+## Data organization
+
+By default, the code expects:
+
+```text
+data/
+  FileNames/
+    image_classes_OPTOS.csv
+    image_classes_LUS.csv
+    image_classes_TUS.csv
+  images/
+    OPTOS_RG/
+    LUS/
+    TUS/
+```
+
+Each CSV should contain at least two columns:
+
+```text
+Image Name,Class
+example_001.png,Nevus
+example_002.png,UM
+```
+
+The rows in the Optos, LUS, and TUS CSV files must be aligned because the model combines corresponding images from the three modalities.
+
+## Configuration
+
+Edit `configs/config.yaml` before running the code. The most important fields are:
+
+```yaml
+data:
+  optos_dir: "data/images/OPTOS_RG"
+  lus_dir: "data/images/LUS"
+  tus_dir: "data/images/TUS"
+  optos_csv: "data/FileNames/image_classes_OPTOS.csv"
+  lus_csv: "data/FileNames/image_classes_LUS.csv"
+  tus_csv: "data/FileNames/image_classes_TUS.csv"
+
+model:
+  base_architecture_path: "models/MM_Model_EV2S.h5"
+  optos_weights: "models/Early_EV2S_best_weights{fold}.h5"
+  lus_weights: "models/LUS_EV2S_best_weights{fold}.h5"
+  tus_weights: "models/TUS_EV2S_best_weights{fold}.h5"
+```
+
+The original code used fold-specific pretrained single-modality weights. Those files are not included in this repository, so users must either provide them or train single-modality models to get the weights.
+
+## Training
+
+From the repository root:
+
+```bash
+export PYTHONPATH=$PWD/src
+python scripts/train_cross_validation.py --config configs/config.yaml
+```
+
+Windows PowerShell:
+
+```powershell
+$env:PYTHONPATH="$PWD\src"
+python scripts/train_cross_validation.py --config configs/config.yaml
+```
+
+The training script performs stratified cross-validation and saves:
+
+```text
+outputs/cross_validation_metrics.xlsx
+outputs/prediction_results_fold_*.xlsx
+outputs/confusion_matrix_fold_*.png
+outputs/roc_curve_fold_*.png
+```
+
+## Inference
+
+After training or after placing a trained model in the expected location:
+
+```bash
+export PYTHONPATH=$PWD/src
+python scripts/predict.py --config configs/config.yaml --model outputs/CBAM_model.h5
+```
+
+## Notes for users
+
+This repository is intended to share the research code in a usable form. It does not include clinical images, protected patient data, or trained weights. These can be obtained upon reasonable request and appropriate documentations.
+
+If you use this code, please cite the related publication.
+
+```text
+Dadzie, A. K., Iddir, S. P., Abtahi, M., Ebrahimi, B., Rahimi, M., Ganesh, S., ... & Yao, X. (2025). Attention-Based multimodal deep learning for uveal melanoma classification using ultra-widefield fundus images and ocular ultrasound. Ophthalmology Science, 100985.
+```
+
+## Important implementation notes
+
+- The model assumes a binary classification task by default: `Nevus` vs `UM`.
+- Image size is set to `307 x 390 x 3`.
+- The fusion model loads three pretrained single-modality models and freezes their layers.
+- A CBAM attention block is applied to each modality-specific feature map before feature concatenation.
+- Validation generators are not augmented beyond rescaling.
 
 ## Support
 For support, email adadzi2@uic.edu or xcy@uic.edu, or open an issue on the repository's issue tracker.
