@@ -1,0 +1,61 @@
+# Example configuration for multi-modal nevus vs uveal melanoma classification.
+# Update the paths to match your local folder structure before running.
+
+seed: 42
+num_folds: 5
+epochs: 300
+batch_size: 16
+learning_rate: 0.0001
+class_names: ["Nevus", "UM"]
+positive_class_index: 1
+class_weights:
+  0: 1.0
+  1: 1.2
+
+image:
+  width: 390
+  height: 307
+  channels: 3
+
+columns:
+  filename: "Image Name"
+  label: "Class"
+
+data:
+  optos_dir: "data/images/OPTOS_RG"
+  lus_dir: "data/images/LUS"
+  tus_dir: "data/images/TUS"
+  optos_csv: "data/FileNames/image_classes_OPTOS.csv"
+  lus_csv: "data/FileNames/image_classes_LUS.csv"
+  tus_csv: "data/FileNames/image_classes_TUS.csv"
+
+model:
+  base_architecture_path: "models/MM_Model_EV2S.h5"
+  optos_weights_pattern: "models/Early_EV2S_best_weights{fold}.h5"
+  lus_weights_pattern: "models/LUS_EV2S_best_weights{fold}.h5"
+  tus_weights_pattern: "models/TUS_EV2S_best_weights{fold}.h5"
+  checkpoint_pattern: "outputs/SP_Attn_EV2S_best_weights{fold}.h5"
+  final_model_path: "outputs/CBAM_model.h5"
+
+augmentation:
+  rescale: 1./255
+  brightness_range: [0.5, 2.0]
+  horizontal_flip: true
+  vertical_flip: true
+  rotation_range: 120
+  height_shift_range: 0.3
+  width_shift_range: 0.5
+  shear_range: 0.3
+  channel_shift_range: 0.5
+  samplewise_center: true
+  zca_whitening: true
+  zca_epsilon: 1e-8
+  fill_mode: "constant"
+  cval: 0
+
+validation_preprocessing:
+  rescale: 1./255
+
+outputs:
+  dir: "outputs"
+  metrics_file: "outputs/cross_validation_metrics.xlsx"
